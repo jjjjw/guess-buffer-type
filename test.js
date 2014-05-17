@@ -25,6 +25,16 @@ function getStream(data) {
 
 
 describe('streamcast', function () {
+  describe('args', function () {
+    it('allows for a cb as second  argument', function (done) {
+      streamcast(getStream(csvData), function(err, data) {
+        assert(!err);
+        assert(data === 'csv');
+        done();
+      });
+    });
+  });
+
   describe('csv', function () {
     it('should identify csv data', function (done) {
       streamcast(getStream(csvData), {}, function(err, data) {

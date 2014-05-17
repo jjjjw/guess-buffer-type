@@ -10,6 +10,10 @@ var multibuffer = require('multibuffer');
  * @return {string} (json|ldjson|csv)
  */
 module.exports = function (readable, opts, cb) {
+  if (typeof opts === 'function') {
+    cb = opts
+    opts = null
+  }
   readable.on('data', litmus.bind(this, (opts || {}), cb));
 };
 
