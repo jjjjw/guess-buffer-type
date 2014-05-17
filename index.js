@@ -1,4 +1,5 @@
 var CSV = require('csv-string');
+var EOL = require('os').EOL;
 var multibuffer = require('multibuffer');
 
 /**
@@ -76,7 +77,7 @@ function getTextFormat(string) {
 }
 
 function isldJSON(string) {
-  var split = string.split('\n');
+  var split = string.split(EOL);
   if (split.length === 1) {
     return false;
   }
