@@ -1,23 +1,9 @@
 var CSV = require('csv-string');
 var EOL = require('os').EOL;
-var multibuffer = require('multibuffer');
 
-/**
- * @param {Readable} readable
- * @param {Object} opts
- * @param {string} [opts.filename] The name of the file, if applicable
- * @param {function(?Error, string)} cb
- * @return {string} (json|ldjson|csv)
- */
-module.exports = function (readable, opts, cb) {
-  if (typeof opts === 'function') {
-    cb = opts
-    opts = null
-  }
-  readable.on('data', litmus.bind(this, (opts || {}), cb));
-};
+module.exports = litmus
 
-function litmus(opts, cb, data) {
+function litmus(data, opts, cb) {
   var ext;
   var format;
   var text;
@@ -30,14 +16,11 @@ function litmus(opts, cb, data) {
   text = getTestText(data);
   format = getTextFormat(text);
 
-  if (!format) {
-    format = getFormat(data);
-  }
-
   if ((ext && format) && ext !== format) {
-    cb(new Error('File extension: '+ ext + ' does not match detected format: ' + format));
+    return new Error('File extension: '+ ext + ' does not match detected format: ' + format)
   }
-  return cb(null, (format || ext));
+  
+  return format || ext
 }
 
 function getTestText(data) {
@@ -50,15 +33,6 @@ function getExtension(filename) {
     return extension[1];
   }
   return null;
-}
-
-function getFormat(data) {
-  try {
-    multibuffer.unpack(data);
-    return 'multibuffer';
-  } catch(e) {
-    noop();
-  }
 }
 
 function getTextFormat(string) {
