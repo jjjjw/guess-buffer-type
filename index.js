@@ -1,5 +1,4 @@
 var CSV = require('csv-string');
-var EOL = require('os').EOL;
 
 module.exports = litmus
 
@@ -55,7 +54,7 @@ function getTextFormat(string) {
 }
 
 function isldJSON(string) {
-  var split = string.split(EOL);
+  var split = string.split(/\r?\n/);
   if (split.length === 1) {
     return false;
   }
