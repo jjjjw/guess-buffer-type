@@ -9,7 +9,17 @@
     "mocha": "*"
   },
   "dependencies": {
-    "csv-string": "^2.1.1",
-    "multibuffer": "^2.2.1"
-  }
+    "csv-string": "^2.1.1"
+  },
+  "description": "Determine the data format of a given readable stream.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oncemoreification/streamcast.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oncemoreification/streamcast/issues"
+  },
+  "homepage": "https://github.com/oncemoreification/streamcast"
 }
