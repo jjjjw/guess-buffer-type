@@ -1,12 +1,13 @@
 {
-  "name": "streamcast",
-  "version": "0.1.1",
+  "name": "guess-buffer-type",
+  "version": "0.2.0",
   "main": "index.js",
   "scripts": {
     "test": "node_modules/mocha/bin/mocha test.js"
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "*",
+    "multibuffer": "^2.2.1"
   },
   "dependencies": {
     "csv-string": "^2.1.1"
