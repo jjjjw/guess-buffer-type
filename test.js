@@ -1,11 +1,9 @@
 var assert = require('assert');
-var multibuffer = require('multibuffer');
 var streamcast = require('./');
 
 var csvData = new Buffer('a,b,c\n1,1,1\n10,1,1\n100,1,1');
 var JSONData = new Buffer(JSON.stringify({'foo': 'bar'}));
 var ldJSONData = new Buffer(JSON.stringify({'foo': 'bar'}) + '\n' + JSON.stringify({'foo': 'bar'}));
-var multibufferData = multibuffer.pack([new Buffer('BUFFMAN')]);
 
 describe('streamcast', function () {
   describe('csv', function () {
